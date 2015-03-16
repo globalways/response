@@ -19,6 +19,7 @@ const (
 
 const (
 	opt_no_more_data = OK + 1
+	Opt_update_app   = OK + 2
 )
 
 const (
@@ -36,6 +37,7 @@ var (
 	errMsgs = map[int]string{
 		OK:                             "OK!",
 		opt_no_more_data:               "没有更多数据了.",
+		Opt_update_app:                 "app需要更新啦.",
 		err_code_public_base:           "未知错误.",
 		err_code_public_invalid_param:  "API请求参数格式错误:",
 		err_code_public_internal_error: "API服务器内部错误:",

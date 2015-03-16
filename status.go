@@ -50,3 +50,7 @@ func NewStatusNoMoreData() *Status {
 func (status *Status) StatusOK() bool {
 	return status.Code == OK
 }
+
+func (status *Status) StatusNoMoreData() bool {
+	return status.Code == opt_no_more_data
+}
