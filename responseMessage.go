@@ -21,6 +21,7 @@ import (
 type ResponseMessage struct {
 	Status *Status     `json:"status"`
 	Body   interface{} `json:"body,omitempty"`
+	Total  int64       `json:"total,omitempty"`
 }
 
 func UnmarshalResponseMessage(data []byte) *ResponseMessage {

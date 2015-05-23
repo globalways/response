@@ -31,9 +31,9 @@ const (
 	Err_Code_Public_Not_Allow_Get  = err_code_public_base - 5
 	Err_Code_Public_Not_Allow_Http = err_code_public_base - 6
 	err_code_public_invalid_valid  = err_code_public_base - 7
-	err_code_public_entity_new = err_code_public_base - 8
-	err_code_public_entity_delete = err_code_public_base - 9
-	err_code_public_entity_update = err_code_public_base - 10
+	err_code_public_entity_new     = err_code_public_base - 8
+	err_code_public_entity_delete  = err_code_public_base - 9
+	err_code_public_entity_update  = err_code_public_base - 10
 )
 
 var (
@@ -49,9 +49,9 @@ var (
 		err_code_public_invalid_valid:  "请求参数验证错误:",
 		Err_Code_Public_Not_Allow_Get:  "API不接受GET请求.",
 		Err_Code_Public_Not_Allow_Http: "API不接受HTTP连接.",
-	err_code_public_entity_new: "新建实体错误.",
-	err_code_public_entity_delete: "删除实体错误.",
-	err_code_public_entity_update: "更新实体错误.",
+		err_code_public_entity_new:     "新建实体错误.",
+		err_code_public_entity_delete:  "删除实体错误.",
+		err_code_public_entity_update:  "更新实体错误.",
 	}
 )
 
