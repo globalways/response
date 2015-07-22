@@ -43,6 +43,14 @@ func NewStatusInternalError(msg string) *Status {
 	return NewStatusf(err_code_public_internal_error, fmt.Sprintf("%s%s", ErrMsg(err_code_public_internal_error), msg))
 }
 
+func NewStatusBIError(msg string) *Status {
+	return NewStatusf(err_code_public_bi_error, fmt.Sprintf("%s%s", ErrMsg(err_code_public_bi_error), msg))
+}
+
+func NewStatusNewEntityf(msg string) *Status {
+	return NewStatusf(err_code_public_entity_new, fmt.Sprintf("%s%s", ErrMsg(err_code_public_entity_new), msg))
+}
+
 func NewStatusNewEntity() *Status {
 	return NewStatus(err_code_public_entity_new)
 }
@@ -51,12 +59,24 @@ func NewStatusUpdateEntity() *Status {
 	return NewStatus(err_code_public_entity_update)
 }
 
+func NewStatusUpdateEntityf(msg string) *Status {
+	return NewStatusf(err_code_public_entity_update, fmt.Sprintf("%s%s", ErrMsg(err_code_public_entity_update), msg))
+}
+
 func NewStatusDeleteEntity() *Status {
 	return NewStatus(err_code_public_entity_delete)
 }
 
+func NewStatusDeleteEntityf(msg string) *Status {
+	return NewStatusf(err_code_public_entity_delete, fmt.Sprintf("%s%s", ErrMsg(err_code_public_entity_delete), msg))
+}
+
 func NewStatusNoMoreData() *Status {
 	return NewStatus(opt_no_more_data)
+}
+
+func NewStatusNoMoreDataf(msg string) *Status {
+	return NewStatusf(opt_no_more_data, fmt.Sprintf("%s%s", ErrMsg(opt_no_more_data), msg))
 }
 
 func (status *Status) StatusOK() bool {

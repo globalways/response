@@ -34,6 +34,7 @@ const (
 	err_code_public_entity_new     = err_code_public_base - 8
 	err_code_public_entity_delete  = err_code_public_base - 9
 	err_code_public_entity_update  = err_code_public_base - 10
+	err_code_public_bi_error       = err_code_public_base - 11
 )
 
 var (
@@ -49,9 +50,10 @@ var (
 		err_code_public_invalid_valid:  "请求参数验证错误:",
 		Err_Code_Public_Not_Allow_Get:  "API不接受GET请求.",
 		Err_Code_Public_Not_Allow_Http: "API不接受HTTP连接.",
-		err_code_public_entity_new:     "新建实体错误.",
-		err_code_public_entity_delete:  "删除实体错误.",
-		err_code_public_entity_update:  "更新实体错误.",
+		err_code_public_entity_new:     "新建实体错误:",
+		err_code_public_entity_delete:  "删除实体错误:",
+		err_code_public_entity_update:  "更新实体错误:",
+		err_code_public_bi_error:       "温馨提示:",
 	}
 )
 

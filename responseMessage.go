@@ -24,6 +24,10 @@ type ResponseMessage struct {
 	Total  int64       `json:"total,omitempty"`
 }
 
+func (rsp *ResponseMessage) String() string {
+	return fmt.Sprintf("[STATUS]:<%v, %v>, [BODY]:<%+v>, [TOTAL]:<%v>", rsp.Status.Code, rsp.Status.Message, rsp.Body, rsp.Total)
+}
+
 func UnmarshalResponseMessage(data []byte) *ResponseMessage {
 	rsp := new(ResponseMessage)
 	if err := json.Unmarshal(data, rsp); err != nil {
