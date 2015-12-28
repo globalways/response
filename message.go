@@ -23,18 +23,19 @@ const (
 )
 
 const (
-	err_code_public_base           = OK - 1
-	err_code_public_invalid_param  = err_code_public_base - 1
-	err_code_public_internal_error = err_code_public_base - 2
-	err_code_public_invalid_json   = err_code_public_base - 3
-	err_code_public_invalid_form   = err_code_public_base - 4
-	Err_Code_Public_Not_Allow_Get  = err_code_public_base - 5
-	Err_Code_Public_Not_Allow_Http = err_code_public_base - 6
-	err_code_public_invalid_valid  = err_code_public_base - 7
-	err_code_public_entity_new     = err_code_public_base - 8
-	err_code_public_entity_delete  = err_code_public_base - 9
-	err_code_public_entity_update  = err_code_public_base - 10
-	err_code_public_bi_error       = err_code_public_base - 11
+	err_code_public_invalid_param = -iota - 1
+	err_code_public_internal_error
+	err_code_public_invalid_json
+	err_code_public_invalid_form
+	Err_Code_Public_Not_Allow_Get
+	Err_Code_Public_Not_Allow_Http
+	err_code_public_entity_new
+	err_code_public_entity_get
+	err_code_public_entity_delete
+	err_code_public_entity_update
+	err_code_public_entity_find
+	err_code_public_bi_error
+	err_code_public_invalid_auth
 )
 
 var (
@@ -42,18 +43,19 @@ var (
 		OK:                             "OK!",
 		opt_no_more_data:               "没有更多数据了.",
 		Opt_update_app:                 "app需要更新啦.",
-		err_code_public_base:           "未知错误.",
-		err_code_public_invalid_param:  "API请求参数格式错误:",
-		err_code_public_internal_error: "API服务器内部错误:",
-		err_code_public_invalid_json:   "API请求json结构错误:",
-		err_code_public_invalid_form:   "API请求form结构错误:",
-		err_code_public_invalid_valid:  "请求参数验证错误:",
+		err_code_public_internal_error: "服务器内部处理错误: %s",
+		err_code_public_invalid_param:  "参数错误: %s",
+		err_code_public_invalid_json:   "请求体json错误: %s",
+		err_code_public_invalid_form:   "请求体form错误: %s",
 		Err_Code_Public_Not_Allow_Get:  "API不接受GET请求.",
 		Err_Code_Public_Not_Allow_Http: "API不接受HTTP连接.",
-		err_code_public_entity_new:     "新建实体错误:",
-		err_code_public_entity_delete:  "删除实体错误:",
-		err_code_public_entity_update:  "更新实体错误:",
-		err_code_public_bi_error:       "温馨提示:",
+		err_code_public_entity_new:     "新建实体错误: %s",
+		err_code_public_entity_get:     "获取实体出错: %s",
+		err_code_public_entity_delete:  "删除实体错误: %s",
+		err_code_public_entity_update:  "更新实体错误: %s",
+		err_code_public_entity_find:    "获取实体列表错误: %s",
+		err_code_public_bi_error:       "温馨提示: %s",
+		err_code_public_invalid_auth:   "请求授权错误: %s",
 	}
 )
 
@@ -62,5 +64,5 @@ func ErrMsg(code int) string {
 		return v
 	}
 
-	return "Something wrong!"
+	return "Something wrong: %s"
 }

@@ -37,6 +37,14 @@ func UnmarshalResponseMessage(data []byte) *ResponseMessage {
 	return rsp
 }
 
+func NewResponseMessage(status *Status, body interface{}, total int64) *ResponseMessage {
+	return &ResponseMessage{
+		Status: status,
+		Body:   body,
+		Total:  total,
+	}
+}
+
 // 新建格式化客户端返回值
 func NewResponseMsgf(code int, format string, args ...interface{}) *ResponseMessage {
 	return &ResponseMessage{
@@ -51,27 +59,29 @@ func NewResponseMsg(code int) *ResponseMessage {
 
 // 服务器内部错误
 func NewResponseMsgInternalError(msg string) *ResponseMessage {
-	return NewResponseMsgf(err_code_public_internal_error, fmt.Sprintf("%s%s", ErrMsg(err_code_public_internal_error), msg))
+	return &ResponseMessage{
+		Status: NewStatusInternalError(msg),
+	}
 }
 
 // json请求参数格式错误
 func NewResponseMsgInvalidJson(msg string) *ResponseMessage {
-	return NewResponseMsgf(err_code_public_invalid_json, fmt.Sprintf("%s%s", ErrMsg(err_code_public_invalid_json), msg))
+	return NewResponseMsgf(err_code_public_invalid_json, fmt.Sprintf(ErrMsg(err_code_public_invalid_json), msg))
 }
 
-// form
+// form请求参数格式错误
 func NewResponseMsgInvalidForm(msg string) *ResponseMessage {
-	return NewResponseMsgf(err_code_public_invalid_form, fmt.Sprintf("%s%s", ErrMsg(err_code_public_invalid_form), msg))
+	return NewResponseMsgf(err_code_public_invalid_form, fmt.Sprintf(ErrMsg(err_code_public_invalid_form), msg))
 }
 
-// 请求参数格式错误
+// 请求参数错误
 func NewResponseMsgInvalidParam(msg string) *ResponseMessage {
-	return NewResponseMsgf(err_code_public_invalid_param, fmt.Sprintf("%s%s", ErrMsg(err_code_public_invalid_param), msg))
+	return NewResponseMsgf(err_code_public_invalid_param, fmt.Sprintf(ErrMsg(err_code_public_invalid_param), msg))
 }
 
-// 验证参数错误
-func NewResponseMsgInvalidValid(msg string) *ResponseMessage {
-	return NewResponseMsgf(err_code_public_invalid_valid, fmt.Sprintf("%s%s", ErrMsg(err_code_public_invalid_valid), msg))
+// API请求验证错误
+func NewResponseMsgInvalidAuth(msg string) *ResponseMessage {
+	return NewResponseMsgf(err_code_public_invalid_auth, fmt.Sprintf(ErrMsg(err_code_public_invalid_auth), msg))
 }
 
 // 请求OK
